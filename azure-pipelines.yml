@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- mainbranches:
+branches:
     include:
       - main
 
@@ -17,7 +17,7 @@ steps:
     versionSpec: '20.x'
   displayName: 'Install Node.js'
 
-- script: |
+- script: 
     - script: npm ci
   displayName: 'npm ci'
 - script: npx playwright install --with-deps
