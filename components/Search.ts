@@ -8,8 +8,8 @@ protected searchButton: Locator;
 
 constructor(page:Page, url:string){
     this.page=page;
-    this.searchBox = page.getByPlaceholder('Hledat');
-    this.searchButton = page.getByRole('button', { name: 'Hledat' });
+    this.searchBox = page.locator('input[name="headSearch[query]"]')
+    this.searchButton = page.locator('button[name="headSearch[send]"]');
   
     }
 
@@ -20,7 +20,7 @@ constructor(page:Page, url:string){
         await this.searchButton.click();
 }
 
-    async search(text:string): Promise<void>{
+    async searchMethod(text:string): Promise<void>{
         await this.fillSearchBox(text);
         await this.clickSearchButton();
     }
