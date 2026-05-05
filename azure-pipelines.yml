@@ -29,6 +29,13 @@ steps:
   env:
     CI: 'true'
 
+- script: |
+    npm install -g snyk
+    snyk test --severity-threshold=high
+  displayName: 'SCA - Snyk scan'
+  env:
+    SNYK_TOKEN: $(SNYK_TOKEN)
+
 - task: PublishTestResults@2
   displayName: 'Publish test results'
   inputs:
